@@ -1,12 +1,8 @@
-// io/read-file-sum.cpp - Read integers from file and print sum.
-// Fred Swartz 2003-08-20
-
 #include <iostream>
 #include <iomanip>
 #include <fstream>
 #include<cstring>
 #include<list>
-//#include <bits/stdc++.h> 
 using namespace std;
 
 int main() {
@@ -15,15 +11,19 @@ int main() {
     list<string> output1,output2;
     ifstream inFile,inFile2;
     ofstream outFile;
-    
+    cout<<"--------------------------------------------------------"<<endl;
+    cout<<"----------------------listMerGer------------------------"<<endl;
+    cout<<"--------------------------------------------------------"<<endl;
     string inputFile1,inputFile2,outputFilename;
     cout<<"enter 1st input file:";
     cin>>inputFile1;
     cout<<"enter 2st input file:";
     cin>>inputFile2;
+    cout<<endl;
     cout<<"enter output file name:";
     cin>>outputFilename;
 
+    cout<<endl;
     cout<<"1st input file: "<<inputFile1<<endl;
     cout<<"2nd input file: "<<inputFile2<<endl;
     
@@ -35,46 +35,34 @@ int main() {
         exit(1); // terminate with error
     }
     else{
-    while (inFile >> x) {
-	inFile>>x;    
-	count++;
-    output1.push_back(x);
-    
+    while(!inFile.eof() && inFile.good()) {
+	inFile>>x;   
+    count++;    
+    output1.push_back(x);    
     }}
-
+    inFile.close();
 
      if (!inFile2) {
         cout << "Unable to open file2";
         exit(1); // terminate with error
     }
     else{
-    while (inFile2 >> y) { 
-    inFile2>>y;   
-    //cout<<x<<" "<<y<<endl;   
+    while (!inFile2.eof() && inFile2.good()) { 
+    inFile2>>y;     
 	count1++;
     output2.push_back(y);
     }}
-
-
-
-    inFile.close();
     inFile2.close();
     output1.sort();
     output2.sort();
+    cout<<endl<<endl<<endl;
+    cout<<"file1 Count: "<<output1.size()<<endl;
+    cout<<"file2 Count: "<<output2.size()<<endl<<endl;
+    cout<<"total number of rows : "<<output2.size()+output1.size()<<endl;
     output1.merge(output2);
     cout<<endl<<endl;
-    cout<<"file1 Count_c: "<<count<<endl;
-    cout<<"file2 Count_c: "<<count1<<endl;
-    cout<<"file1 Count: "<<output1.size()<<endl;
-    cout<<"file2 Count: "<<output2.size()<<endl;
-//     cout<<count;
-//    cout<<"size : "<<output1.size()<<endl;
-    //cout<<output<<endl;
     
-    // for(auto j=output1.begin();j!=output1.end();++j)
-    // {
-    //     cout<<"output :"<<*j<<endl;
-    // }
+
     
     output1.unique();
      for(auto j=output1.begin();j!=output1.end();++j)
@@ -83,7 +71,7 @@ int main() {
         outFile<<*j<<endl;
     }
     cout<<"--------------------------------------------------------"<<endl;
-    cout<<"Output Size: "<<output1.size()<<endl;
+    cout<<"Number of Unique rows: "<<output1.size()<<endl;
     cout<<"Output Saved in file : "<<outputFilename<<endl;
     cout<<"--------------------------------------------------------"<<endl;
     outFile.close();
