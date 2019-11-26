@@ -5,14 +5,16 @@ Requirement: GCC should be installed before compiling the c++ code.
 
 Step 1:
 $ git clone https://github.com/AdarshMStar/listMerGer.git
-$ cd listMerGer
+
 
 Step 2:
-$ g++ listMerGer.cpp
+$ cd listMerGer
 
 Step 3:
-$ ./a.out
+$ g++ listMerGer.cpp
 
+Step 4:
+$ ./a.out
 
 PS:For convenience keep both the text files in this directory only.
 
